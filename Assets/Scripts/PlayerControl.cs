@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerControl : MonoBehaviour
 {
     public Rigidbody2D rigidbody2d;
@@ -67,6 +67,10 @@ public class PlayerControl : MonoBehaviour
             GameWIn.SetActive(true);
             isGameWon = true;
         }
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
     }
 
 }
