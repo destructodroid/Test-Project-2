@@ -7,7 +7,8 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public float Speed;
     public GameObject GameWIn;
-    private bool isGameWon = false;
+    public GameObject GamePause;
+    private bool isGameWon = false, isGamePaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,10 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         if (isGameWon == true)
+        {
+            return;
+        }
+        else if (isGamePause == true)
         {
             return;
         }
@@ -41,6 +46,16 @@ public class PlayerControl : MonoBehaviour
         {
             rigidbody2d.velocity = new Vector2(0f, 0f);
         }
+        else if (Input.GetAxis("Cancel") > 0)
+        {
+            isGamePaused = true;
+            GamePause.SetActivate = true;
+        }
+        else if (Input.GetAxis("Submit") > 0)
+        {
+            isGamePaused = false;
+            GamePause.SetActivate = false;
+        }
        
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,4 +67,5 @@ public class PlayerControl : MonoBehaviour
             isGameWon = true;
         }
     }
+
 }
