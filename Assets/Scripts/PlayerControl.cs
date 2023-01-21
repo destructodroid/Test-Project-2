@@ -7,8 +7,9 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public float Speed;
     public GameObject GameWIn;
-    public GameObject GamePause;
-    private bool isGameWon = false, isGamePaused = false;
+    public GameObject PausePanel;
+    private bool isGameWon = false;
+    private bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
-        else if (isGamePause == true)
+        else if (isPaused == true)
         {
             return;
         }
@@ -48,13 +49,13 @@ public class PlayerControl : MonoBehaviour
         }
         else if (Input.GetAxis("Cancel") > 0)
         {
-            isGamePaused = true;
-            GamePause.SetActivate = true;
+            isPaused = true;
+            PausePanel.SetActive(true);
         }
         else if (Input.GetAxis("Submit") > 0)
         {
-            isGamePaused = false;
-            GamePause.SetActivate = false;
+            isPaused = false;
+            PausePanel.SetActive(false);
         }
        
     }
